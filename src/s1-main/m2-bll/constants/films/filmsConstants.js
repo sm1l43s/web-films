@@ -1,0 +1,11 @@
+export const SET_FILMS = "SET_FILMS";
+export const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
+export const SET_TOTAL_ELEMENTS = "SET_TOTAL_ELEMENTS";
+export const SET_IS_FETCHING = "SET_IS_FETCHING";
+export const SET_TYPE_FILMS = "SET_TYPE_FILMS";
+export const SET_RATING_FROM = "SET_RATING_FROM";
+export const SET_RATING_TO = "SET_RATING_TO";
+export const SET_YEAR_FROM = "SET_YEAR_FROM";
+export const SET_YEAR_TO = "SET_YEAR_TO";
+export const SET_ORDER = "SET_ORDER";
+export const SET_KEYWORD = "SET_KEYWORD";

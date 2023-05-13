@@ -1,0 +1,13 @@
+.title {
+    color: #fff;
+    font-weight: 300;
+    font-size: 28px;
+    margin: 20px 0 5px;
+}
+
+.tabsBtn {
+    cursor: pointer;
+    height: 50px;
+    opacity: 0.75;
+    transition: 0.4s ease;
+}

@@ -1,0 +1,204 @@
+header {
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    width: 100%;
+    background-color: #2b2b31;
+    box-shadow: 0 5px 25px 0 rgba(0, 0, 0, 0.3);
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-rows: 1fr;
+    grid-column-gap: 0;
+    grid-row-gap: 0;
+    justify-items: center;
+}
+
+.logo {
+    grid-area: 1 / 1 / 2 / 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 15px;
+    background-color: #28282d;
+    width: 150px;
+    font-size: 24px;
+    color: aliceblue;
+    font-weight: 900;
+    cursor: pointer;
+}
+
+.logo:hover {
+    background-color: #2b2b31;
+}
+
+.navBar {
+    grid-area: 1 / 2 / 2 / 3;
+}
+
+.auth {
+    grid-area: 1 / 3 / 2 / 4;;
+    display: grid;
+    align-content: center;
+    justify-content: end;
+}
+
+.menuBlock {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 1fr;
+    grid-column-gap: 0;
+    grid-row-gap: 0;
+}
+
+.menuList {
+    grid-area: 1 / 1 / 2 / 2;
+}
+
+.menuSearch {
+    grid-area: 1 / 2 / 2 / 3;
+    font-size: 26px;
+    color: rgba(255, 255, 255, 0.75);
+    font-weight: 300;
+    display: grid;
+    align-content: center;
+    justify-content: end;
+    transition: 0.3s ease-in;
+}
+
+.menuSearch div:hover {
+    color: #fff;
+}
+
+ul {
+    display: flex;
+    justify-content: flex-start;
+    box-sizing: border-box;
+    padding: 20px;
+}
+
+li {
+    list-style: none;
+    margin-right: 20px;
+    font-size: 25px;
+    font-weight: bold;
+    padding: 0;
+}
+
+li span {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.75);
+    line-height: 40px;
+    display: block;
+    font-weight: 300;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+li span:hover {
+    color: #ff55a5;
+}
+
+li a {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.75);
+    line-height: 40px;
+    display: block;
+    font-weight: 400;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+li a:hover {
+    color: #ff55a5;
+}
+
+.searchContainer {
+    height: 60px;
+    width: 94%;
+    align-items: center;
+    transition: 0.4s ease;
+    background-color: #2b2b31;
+    box-shadow: 0 5px 25px 0 rgba(0, 0, 0, 0.3);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.searchContent {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    height: 60px;
+    position: relative;
+}
+
+.searchContent input {
+    position: relative;
+    height: 60px;
+    width: 100%;
+    background-color: #28282d;
+    border: none;
+    padding: 0 120px 0 15px;
+    font-size: 15px;
+    color: #fff;
+    font-family: 'Open Sans', sans-serif;
+    outline: none;
+}
+
+.searchContent button {
+    position: absolute;
+    height: 40px;
+    width: 90px;
+    top: 10px;
+    right: 15px;
+    border-radius: 4px;
+    background-image: linear-gradient(90deg, #ff55a5 0%, #ff5860 100%);
+    box-shadow: 0 0 20px 0 rgba(255, 88, 96, 0.5);
+    opacity: 0.85;
+    font-size: 12px;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 500;
+    letter-spacing: 1px;
+    transition: 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.searchContent button:hover {
+    color: #fff;
+    opacity: 1;
+}
+
+.signIn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 120px;
+    border-radius: 4px;
+    background-image: -moz-linear-gradient(90deg, #ff55a5 0%, #ff5860 100%);
+    background-image: -webkit-linear-gradient(90deg, #ff55a5 0%, #ff5860 100%);
+    background-image: -ms-linear-gradient(90deg, #ff55a5 0%, #ff5860 100%);
+    background-image: linear-gradient(90deg, #ff55a5 0%, #ff5860 100%);
+    -webkit-box-shadow: 0 0 20px 0 rgba(255, 88, 96, 0.5);
+    box-shadow: 0 0 20px 0 rgba(255, 88, 96, 0.5);
+    opacity: 0.85;
+    transition: 0.3s ease-in;
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+.signIn span {
+    color: #fff;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+.signIn:hover {
+    opacity: 1;
+}
