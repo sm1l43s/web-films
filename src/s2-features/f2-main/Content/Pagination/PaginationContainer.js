@@ -1,9 +1,11 @@
 import {ConfigProvider, Pagination} from "antd";
+import {useDispatch} from "react-redux";
 
 function PaginationContainer(props) {
+    const dispatch = useDispatch()
 
     let onChangeCurrentPage = (page, pageSize) => {
-        props.setCurrentPage(page);
+        dispatch(props.setCurrentPage(page));
     }
 
     return (

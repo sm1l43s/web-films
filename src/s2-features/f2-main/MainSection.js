@@ -1,16 +1,17 @@
 import classes from "./MainSection.module.css";
 import Content from "./Content/Content";
-import {connect} from "react-redux";
-import {getPremieresFilms} from "../../s1-main/m2-bll/thunk/filmsThunk";
 import {useEffect} from "react";
 import CarouselContainer from "./Carousel/CarouselContainer";
 import SpinContainer from "./Content/Spin/SpinContainer";
+import {getPremieresFilms} from "../../s1-main/m2-bll/thunk/filmsThunk";
+import {useDispatch, useSelector} from "react-redux";
 
-function MainSection({getPremieresFilms, year, month, premieresFilms, isFetching, ...props}) {
-
+function MainSection() {
+    const premieres = useSelector(state => state.premieres)
+    const dispatch = useDispatch();
     useEffect(() => {
-        getPremieresFilms(year, month);
-    }, [getPremieresFilms, year, month]);
+        dispatch(getPremieresFilms(premieres.year, premieres.month));
+    }, [getPremieresFilms, premieres.year, premieres.month]);
 
     return (
         <div className={classes.container}>
@@ -18,13 +19,14 @@ function MainSection({getPremieresFilms, year, month, premieresFilms, isFetching
                 <div className={classes.col}>
                     <h1 className={classes.title}><b>Кинопремьеры</b> месяца</h1>
                     {
-                        isFetching ? <SpinContainer countRow={1} /> : <CarouselContainer films={premieresFilms}/>
+                        premieres.isFetching ? <SpinContainer countRow={1}/> :
+                            <CarouselContainer films={premieres.premieresFilms}/>
                     }
                 </div>
             </div>
             <div className={classes.row}>
                 <div className={classes.col}>
-                    <Content />
+                    <Content/>
                 </div>
             </div>
             <div className={classes.row}>3</div>
@@ -32,13 +34,4 @@ function MainSection({getPremieresFilms, year, month, premieresFilms, isFetching
     );
 }
 
-let mstp = (state) => ({
-    premieresFilms: state.premieres.premieresFilms,
-    year: state.premieres.year,
-    month: state.premieres.month,
-    isFetching: state.premieres.isFetching
-})
-
-export default connect(mstp, {
-    getPremieresFilms
-})(MainSection);
+export default MainSection;

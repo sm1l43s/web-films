@@ -1,4 +1,3 @@
-import {connect} from "react-redux";
 import React from "react";
 import {ConfigProvider, Tabs} from "antd";
 import classes from "../Content.module.css";
@@ -24,6 +23,7 @@ function TabsContainer() {
             children: <SeriesContainer/>,
         },
     ];
+
     return (
         <>
             <h2 className={classes.title} style={{textTransform: "none"}}>Новинки</h2>
@@ -46,6 +46,4 @@ function TabsContainer() {
     );
 }
 
-let mstp = (state) => ({});
-
-export default connect(mstp, {})(TabsContainer);
+export default TabsContainer;
