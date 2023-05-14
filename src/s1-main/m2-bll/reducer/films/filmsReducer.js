@@ -1,32 +1,25 @@
 import {
-    SET_CURRENT_PAGE,
+    SET_CURRENT_PAGE_FILMS,
     SET_FILMS,
-    SET_IS_FETCHING,
-    SET_KEYWORD,
-    SET_ORDER,
-    SET_RATING_FROM,
-    SET_RATING_TO,
-    SET_TOTAL_ELEMENTS,
-    SET_TYPE_FILMS,
-    SET_YEAR_FROM,
-    SET_YEAR_TO
+    SET_IS_FETCHING_FILMS, SET_KEYWORD_FILMS, SET_ORDER_FILMS, SET_RATING_FROM_FILMS, SET_RATING_TO_FILMS,
+    SET_TOTAL_ELEMENTS_FILMS, SET_TYPE_FILMS, SET_YEAR_FROM_FILMS, SET_YEAR_TO_FILMS
 } from "../../constants/films/filmsConstants";
 
 let initialState = {
     films: [],
-    currentPage: 1,
-    totalElements: 100,
-    isFetching: false,
-    type: "ALL",
-    ratingFrom: 6,
-    ratingTo: 10,
-    yearFrom: new Date().getFullYear(),
-    yearTo: new Date().getFullYear(),
-    keyword: "",
-    orderFilms: "RATING"
+    currentPageFilms: 1,
+    totalElementsFilms: 100,
+    isFetchingFilms: false,
+    typeFilms: "FILM",
+    ratingFromFilms: 0,
+    ratingToFilms: 10,
+    yearFromFilms: new Date().getFullYear(),
+    yearToFilms: new Date().getFullYear(),
+    keywordFilms: "",
+    orderFilms: "NUM_VOTE"
 }
 
-export const filmsReducer = (state = initialState, action) => {
+const filmsReducer = (state = initialState, action) => {
     switch (action.type) {
         case SET_FILMS: {
             return {
@@ -34,61 +27,61 @@ export const filmsReducer = (state = initialState, action) => {
                 films: action.films
             }
         }
-        case SET_CURRENT_PAGE: {
+        case SET_CURRENT_PAGE_FILMS: {
             return {
                 ...state,
-                currentPage: action.currentPage
+                currentPageFilms: action.currentPageFilms
             }
         }
-        case SET_TOTAL_ELEMENTS: {
+        case SET_TOTAL_ELEMENTS_FILMS: {
             return {
                 ...state,
-                totalElements: action.totalElements
+                totalElementsFilms: action.totalElementsFilms
             }
         }
-        case SET_IS_FETCHING: {
+        case SET_IS_FETCHING_FILMS: {
             return {
                 ...state,
-                isFetching: action.isFetching
+                isFetchingFilms: action.isFetchingFilms
             }
         }
         case SET_TYPE_FILMS: {
             return {
                 ...state,
-                type: action.typeFilms
+                typeFilms: action.typeFilms
             }
         }
-        case SET_RATING_FROM: {
+        case SET_RATING_FROM_FILMS: {
             return {
                 ...state,
-                ratingFrom: action.ratingFrom
+                ratingFromFilms: action.ratingFromFilms
             }
         }
-        case SET_RATING_TO: {
+        case SET_RATING_TO_FILMS: {
             return {
                 ...state,
-                ratingTo: action.ratingTo
+                ratingToFilms: action.ratingToFilms
             }
         }
-        case SET_YEAR_FROM: {
+        case SET_YEAR_FROM_FILMS: {
             return {
                 ...state,
-                yearFrom: action.yearFrom
+                yearFromFilms: action.yearFromFilms
             }
         }
-        case SET_YEAR_TO: {
+        case SET_YEAR_TO_FILMS: {
             return {
                 ...state,
-                yearTo: action.yearTo
+                yearToFilms: action.yearToFilms
             }
         }
-        case SET_KEYWORD: {
+        case SET_KEYWORD_FILMS: {
             return {
                 ...state,
-                keyword: action.keyword
+                keywordFilms: action.keywordFilms
             }
         }
-        case SET_ORDER: {
+        case SET_ORDER_FILMS: {
             return {
                 ...state,
                 orderFilms: action.orderFilms
@@ -101,3 +94,5 @@ export const filmsReducer = (state = initialState, action) => {
         }
     }
 }
+
+export default filmsReducer;

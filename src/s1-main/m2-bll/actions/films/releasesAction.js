@@ -6,6 +6,6 @@ import {
 } from "../../constants/films/releasesConstant";
 
 export const setReleasedFilms = (releasesFilms) => ({type: SET_RELEASES_FILMS, releasesFilms});
-export const setTotalElements = (totalElements) => ({type: SET_TOTAL_ELEMENTS, totalElements});
-export const setCurrentPage = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage});
-export const setIsFetching = (isFetching) => ({type: SET_IS_FETCHING, isFetching});
+export const setTotalElementsReleases = (totalElements) => ({type: SET_TOTAL_ELEMENTS, totalElements});
+export const setCurrentPageReleases = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage});
+export const setIsFetchingReleases = (isFetching) => ({type: SET_IS_FETCHING, isFetching});

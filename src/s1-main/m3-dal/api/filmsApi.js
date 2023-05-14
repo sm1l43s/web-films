@@ -19,4 +19,7 @@ export const FilmsApi = {
             "&keyword=" + keyword
         );
     },
+    getFilmInfoById(id) {
+        return instance.get(`/films/${id}`);
+    }
 }

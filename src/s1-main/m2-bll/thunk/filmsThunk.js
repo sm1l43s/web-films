@@ -1,18 +1,19 @@
 import {FilmsApi} from "../../m3-dal/api/filmsApi";
-import {setIsFetching, setReleasedFilms, setTotalElements} from "../actions/films/releasesAction";
+import {setIsFetchingReleases, setReleasedFilms, setTotalElementsReleases} from "../actions/films/releasesAction";
 import {setIsFetchingPremieres, setPremieresFilms} from "../actions/films/premieresActions";
-import {setFilms, setIsFetchingFilms} from "../actions/films/filmsAction";
+import {setFilms, setIsFetchingFilms, setTotalElementsFilms} from "../actions/films/filmsAction";
+import {setFilmInfo, setIsFetching} from "../actions/films/filmInfoAction";
 
 export const getReleasesFilms = (year, month, page) => async (dispatch) => {
-    dispatch(setIsFetching(true));
+    dispatch(setIsFetchingReleases(true));
     let response = await FilmsApi.getReleasesFilms(year, month, page);
     if (response.status === 200) {
         dispatch(setReleasedFilms(response.data.releases));
-        dispatch(setTotalElements(response.data.total));
+        dispatch(setTotalElementsReleases(response.data.total));
     } else {
         console.error(response.status);
     }
-    dispatch(setIsFetching(false));
+    dispatch(setIsFetchingReleases(false));
 }
 
 export const getPremieresFilms = (year, month) => async (dispatch) => {
@@ -31,9 +32,18 @@ export const getFilms = (type, ratingFrom, ratingTo, yearFrom, yearTo, page, ord
     let response = await FilmsApi.getFilms(type, ratingFrom, ratingTo, yearFrom, yearTo, page, order, keyword);
     if (response.status === 200) {
         dispatch(setFilms(response.data.items));
-        dispatch(setTotalElements(response.data.total));
+        dispatch(setTotalElementsFilms(response.data.total));
     } else {
         console.error(response.status);
     }
     dispatch(setIsFetchingFilms(false));
+}
+
+export const getFilmInfoById = (id) => async (dispatch) => {
+    dispatch(setIsFetching(true));
+    let response = await FilmsApi.getFilmInfoById(id);
+    if (response.status === 200) {
+        dispatch(setFilmInfo(response.data));
+    }
+    dispatch(setIsFetching(false));
 }

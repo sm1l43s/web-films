@@ -1,7 +1,7 @@
 import {Row} from "antd";
-import CardItem from "../../Card/CardItem";
-import SpinContainer from "../Spin/SpinContainer";
-import {getSubArraysFromArray} from "../../../../s1-main/m2-bll/utils";
+import CardItem from "../../../Card/CardItem";
+import SpinContainer from "../../Spin/SpinContainer";
+import {getSubArraysFromArray} from "../../../../../s1-main/m2-bll/utils";
 import {NavLink} from "react-router-dom";
 
 function TabsChildren(props) {

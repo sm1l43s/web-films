@@ -1,11 +1,14 @@
 import classes from "./Header.module.css";
 import {SearchOutlined} from "@ant-design/icons";
-import {connect} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {setIsSearchBar} from "../../s1-main/m2-bll/actions/headerActions";
 
-function Header({setIsSearchBar, isSearchBar}) {
+function Header() {
+    const isSearchBar = useSelector(state => state.header.isSearchBar);
+    const dispatch = useDispatch();
+
     function onToggleSearchBar() {
-        setIsSearchBar(!isSearchBar);
+        dispatch(setIsSearchBar(!isSearchBar));
     }
 
     return (
@@ -33,9 +36,9 @@ function Header({setIsSearchBar, isSearchBar}) {
                     </div>
                 </nav>
                 <div className={classes.auth}>
-                   <div className={classes.signIn}>
-                       <span>Sign in</span>
-                   </div>
+                    <div className={classes.signIn}>
+                        <span>Sign in</span>
+                    </div>
                 </div>
             </div>
             {
@@ -55,10 +58,4 @@ function Header({setIsSearchBar, isSearchBar}) {
     );
 }
 
-let mstp = (state) => ({
-    isSearchBar: state.header.isSearchBar
-});
-
-export default connect(mstp, {
-    setIsSearchBar
-})(Header);
+export default Header;

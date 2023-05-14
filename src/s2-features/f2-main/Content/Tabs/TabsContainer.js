@@ -1,26 +1,20 @@
 import React from "react";
 import {ConfigProvider, Tabs} from "antd";
 import classes from "../Content.module.css";
-import NewReleasesContainer from "./NewReleasesContainer";
-import FilmsContainer from "./FilmsContainer";
-import SeriesContainer from "./SeriesContainer";
+import NewReleasesTabContainer from "./Tab/NewReleasesTabContainer";
+import FilmsTabContainer from "./Tab/FilmsTabContainer";
 
 function TabsContainer() {
     const items = [
         {
             key: '1',
             label: `Цифровые релизы`,
-            children: <NewReleasesContainer/>,
+            children: <NewReleasesTabContainer/>,
         },
         {
             key: '2',
             label: `Фильмы`,
-            children: <FilmsContainer/>,
-        },
-        {
-            key: '3',
-            label: `Сериалы`,
-            children: <SeriesContainer/>,
+            children: <FilmsTabContainer/>,
         },
     ];
 

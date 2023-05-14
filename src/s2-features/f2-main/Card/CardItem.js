@@ -13,7 +13,7 @@ function CardItem(props) {
     }
 
 
-    let rating = props.rating || props.ratingKinopoisk || "0.0";
+    let rating = props.rating || props.ratingKinopoisk || props.ratingImdb || "0.0";
     rating = cutText(rating + "", 3);
 
     let filmName = checkName(props.nameRu, props.nameEn, props.nameOriginal);
