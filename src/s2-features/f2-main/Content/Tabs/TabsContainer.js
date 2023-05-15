@@ -5,6 +5,7 @@ import NewReleasesTabContainer from "./Tab/NewReleasesTabContainer";
 import FilmsTabContainer from "./Tab/FilmsTabContainer";
 import {useDispatch, useSelector} from "react-redux";
 import {setActiveTab} from "../../../../s1-main/m2-bll/actions/commonSetActions";
+import SeriesTabContainer from "./Tab/SeriesTabContainer";
 
 function TabsContainer() {
     const activeTabKey = useSelector(state => state.settings.activeTabKey);
@@ -24,6 +25,11 @@ function TabsContainer() {
             key: '2',
             label: `Фильмы`,
             children: <FilmsTabContainer/>,
+        },
+        {
+            key: '3',
+            label: `Сериалы`,
+            children: <SeriesTabContainer/>,
         },
     ];
 

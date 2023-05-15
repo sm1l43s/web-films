@@ -3,6 +3,8 @@ import {setIsFetchingReleases, setReleasedFilms, setTotalElementsReleases} from 
 import {setIsFetchingPremieres, setPremieresFilms} from "../actions/films/premieresActions";
 import {setFilms, setIsFetchingFilms, setTotalElementsFilms} from "../actions/films/filmsAction";
 import {setFilmInfo, setIsFetching} from "../actions/films/filmInfoAction";
+import {setIsFetchingSeries, setSeries, setTotalElementsSeries} from "../actions/films/seriesAction";
+import {setSeriesSeasonInfo} from "../actions/films/seriesSeasonInfo";
 
 export const getReleasesFilms = (year, month, page) => async (dispatch) => {
     dispatch(setIsFetchingReleases(true));
@@ -39,6 +41,18 @@ export const getFilms = (type, ratingFrom, ratingTo, yearFrom, yearTo, page, ord
     dispatch(setIsFetchingFilms(false));
 }
 
+export const getSeries = (type, ratingFrom, ratingTo, yearFrom, yearTo, page, order, keyword) => async (dispatch) => {
+    dispatch(setIsFetchingSeries(true));
+    let response = await FilmsApi.getFilms(type, ratingFrom, ratingTo, yearFrom, yearTo, page, order, keyword);
+    if (response.status === 200) {
+        dispatch(setSeries(response.data.items));
+        dispatch(setTotalElementsSeries(response.data.total));
+    } else {
+        console.error(response.status);
+    }
+    dispatch(setIsFetchingSeries(false));
+}
+
 export const getFilmInfoById = (id) => async (dispatch) => {
     dispatch(setIsFetching(true));
     let response = await FilmsApi.getFilmInfoById(id);
@@ -46,4 +60,13 @@ export const getFilmInfoById = (id) => async (dispatch) => {
         dispatch(setFilmInfo(response.data));
     }
     dispatch(setIsFetching(false));
+}
+
+export const getSeriesSeasonInfo = (id) => async (dispatch) => {
+    let response = await FilmsApi.getSeriesSeasonInfo(id);
+    if (response.status === 200) {
+        dispatch(setSeriesSeasonInfo(response.data.items));
+    } else {
+        console.log(response.status);
+    }
 }

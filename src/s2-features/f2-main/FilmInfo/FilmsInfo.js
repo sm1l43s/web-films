@@ -3,6 +3,7 @@ import {Col, Image, Row} from "antd";
 import {StarFilled} from "@ant-design/icons";
 import {checkName, cutText, getCastItems} from "../../../s1-main/m2-bll/utils";
 import AboutContainer from "./parts/AboutContainer";
+import SeriesSeasonInfoContainer from "./SeriesSeasonInfoContainer";
 
 function FilmsInfo({film}) {
     let genres = getCastItems(film.genres, "genre");
@@ -22,7 +23,7 @@ function FilmsInfo({film}) {
             <Row>
                 <Col><Image width={240} height={380} src={film.posterUrl}/></Col>
                 <Col  className={classes.mainInfo}>
-                    <Row><Col><h1 className={classes.detailsTitle}>{filmName}</h1></Col></Row>
+                    <Row style={{width: 700}}><Col><h1 className={classes.detailsTitle}>{filmName}</h1></Col></Row>
                     <Row justify={"start"} style={{marginTop: 5}}>
                         <div className={classes.info}>
                             <span className={classes.rate}>
@@ -42,7 +43,7 @@ function FilmsInfo({film}) {
                             <AboutContainer title={"Продолжительность"} value={film.filmLength + ' мин'} />
                         </div>
                     </Row>
-                    <Row style={{width: 600, marginTop:20}}>
+                    <Row style={{width: 700, marginTop:20}}>
                         <div className={classes.filmInfo}>
                                <span className={classes.filmInfoCategory}>
                                    <b style={{textAlign: "justify"}}>{film.description}</b>
@@ -50,7 +51,7 @@ function FilmsInfo({film}) {
                         </div>
                     </Row>
                 </Col>
-                <Row justify={"center"} style={{width: "100%", marginTop: 20}}>
+                <Row justify={"space-between"} style={{width: "100%", marginTop: 20}}>
                     <Col>
                         <div className={classes.iframe_block}>
                             <iframe className={classes.iframe_class}
@@ -60,6 +61,11 @@ function FilmsInfo({film}) {
                                     src={"https://1ww.frkp.live/film/"+film.kinopoiskId+"/"}>
                             </iframe>
                         </div>
+                    </Col>
+                    <Col>
+                        {
+                            film.serial ? <SeriesSeasonInfoContainer id={film.kinopoiskId} /> : <></>
+                        }
                     </Col>
                 </Row>
             </Row>

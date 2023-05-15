@@ -104,3 +104,35 @@
     width: 900px;
     height: 900px;
 }
+
+.accordionList {
+    width: 100%;
+}
+.accordionList thead tr {
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.accordionList thead th {
+    color: rgba(255,255,255,0.7);
+    font-size: 12px;
+    font-weight: 900;
+    padding: 5px 10px;
+    font-family: 'Open Sans', sans-serif;
+}
+.accordionList tbody tr {
+    text-align: center;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    cursor: pointer;
+}
+.accordionList tbody tr:hover {
+    background-color: rgba(255,255,255,0.03);
+}
+.accordionList tbody tr:last-child {
+    border-bottom: none;
+}
+.accordionList tbody th,
+.accordionList tbody td {
+    color: rgba(255,255,255,0.5);
+    font-size: 12px;
+    padding: 5px 5px 5px;
+    font-family: 'Open Sans', sans-serif;
+}

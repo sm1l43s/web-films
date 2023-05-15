@@ -21,5 +21,8 @@ export const FilmsApi = {
     },
     getFilmInfoById(id) {
         return instance.get(`/films/${id}`);
+    },
+    getSeriesSeasonInfo(id) {
+        return instance.get(`/films/${id}/seasons`);
     }
 }
