@@ -1,28 +1,21 @@
 import classes from "./FilmInfo.module.css";
 import {Col, Image, Row} from "antd";
 import {StarFilled} from "@ant-design/icons";
-import {checkName, cutText} from "../../../s1-main/m2-bll/utils";
+import {checkName, cutText, getCastItems} from "../../../s1-main/m2-bll/utils";
+import AboutContainer from "./parts/AboutContainer";
 
 function FilmsInfo({film}) {
-    let genres = "";
-    if (film.genres != null) {
-        genres = film.genres.map(item => {
-            return <span>{item.genre}</span>;
-        });
-    }
-    let countries = "";
-    if (film.countries != null) {
-        countries = film.countries.map(item => {
-            return <span>{item.country}</span>;
-        });
-    }
+    let genres = getCastItems(film.genres, "genre");
+    let countries = getCastItems(film.countries, "country");
+
     let rating = film.rating || film.ratingKinopoisk || film.ratingImdb || "0.0";
     rating = cutText(rating + "", 3);
 
     let filmName = checkName(film.nameRu, film.nameEn, film.nameOriginal);
 
-    let age = film.ratingAgeLimits ?? "0";
-    age = age.length > 3? age.slice(3): age;
+    let age = film.ratingAgeLimits ?? film.ratingMpaa ?? "UNK";
+    age = age.length > 3 ? age.slice(3): age;
+
     return (
         <>
         <div className={classes.details}>
@@ -42,36 +35,11 @@ function FilmsInfo({film}) {
                     </Row>
                     <Row justify={"start"}>
                         <div style={{marginTop: 20}} className={classes.info}>
-                            <div className={classes.filmInfo}>
-                               <span className={classes.filmInfoCategory}>
-                                   <b>Страна производства: </b>
-                                   {countries}
-                               </span>
-                            </div>
-                            <div className={classes.filmInfo}>
-                               <span className={classes.filmInfoCategory}>
-                                   <b>Год выпуска: </b>
-                                   <b>{film.year}</b>
-                               </span>
-                            </div>
-                            <div className={classes.filmInfo}>
-                               <span className={classes.filmInfoCategory}>
-                                   <b>Жанр: </b>
-                                   {genres}
-                               </span>
-                            </div>
-                            <div className={classes.filmInfo}>
-                               <span className={classes.filmInfoCategory}>
-                                   <b>Слоган: </b>
-                                   <b>{film.slogan}</b>
-                               </span>
-                            </div>
-                            <div className={classes.filmInfo}>
-                               <span className={classes.filmInfoCategory}>
-                                   <b>Продолжительность: </b>
-                                   <b>{film.filmLength + ' мин'}</b>
-                               </span>
-                            </div>
+                            <AboutContainer title={"Страна производства"} value={countries} />
+                            <AboutContainer title={"Год выпуска"} value={film.year} />
+                            <AboutContainer title={"Жанр"} value={genres} />
+                            <AboutContainer title={"Слоган"} value={film.slogan} />
+                            <AboutContainer title={"Продолжительность"} value={film.filmLength + ' мин'} />
                         </div>
                     </Row>
                     <Row style={{width: 600, marginTop:20}}>

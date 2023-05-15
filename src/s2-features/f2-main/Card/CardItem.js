@@ -1,18 +1,10 @@
 import classes from "./CardItem.module.css";
 import {PlayCircleFilled, StarFilled} from "@ant-design/icons";
 import {Col} from "antd";
-import {checkName, cutText} from "../../../s1-main/m2-bll/utils";
+import {checkName, cutText, getCastItems} from "../../../s1-main/m2-bll/utils";
 
 function CardItem(props) {
-
-    let genres = "";
-    if (props.genres != null) {
-        genres = props.genres.map(item => {
-            return <span>{item.genre}</span>;
-        });
-    }
-
-
+    let genres = getCastItems(props.genres, "genre");
     let rating = props.rating || props.ratingKinopoisk || props.ratingImdb || "0.0";
     rating = cutText(rating + "", 3);
 

@@ -1,1 +1,2 @@
 export const SET_IS_SEARCH_BAR = "SET_IS_SEARCH_BAR";
+export const SET_ACTIVE_TAB = "SET_ACTIVE_TAB";

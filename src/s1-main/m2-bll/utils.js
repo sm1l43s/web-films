@@ -60,3 +60,13 @@ export const getNameMonthByNumber = (numberMonth) => {
         }
     }
 }
+
+export const getCastItems = (arr, itemName) => {
+    let items;
+    if (arr != null) {
+        items = arr.map(item => {
+            return <span>{item[itemName]}</span>;
+        });
+    }
+    return items;
+}

@@ -27,10 +27,15 @@ header {
     padding: 0 15px;
     background-color: #28282d;
     width: 150px;
+    cursor: pointer;
+}
+
+.navlink {
     font-size: 24px;
     color: aliceblue;
     font-weight: 900;
-    cursor: pointer;
+    text-transform: none;
+    text-decoration: none;
 }
 
 .logo:hover {

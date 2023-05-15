@@ -3,8 +3,17 @@ import {ConfigProvider, Tabs} from "antd";
 import classes from "../Content.module.css";
 import NewReleasesTabContainer from "./Tab/NewReleasesTabContainer";
 import FilmsTabContainer from "./Tab/FilmsTabContainer";
+import {useDispatch, useSelector} from "react-redux";
+import {setActiveTab} from "../../../../s1-main/m2-bll/actions/commonSetActions";
 
 function TabsContainer() {
+    const activeTabKey = useSelector(state => state.settings.activeTabKey);
+    const dispatch = useDispatch();
+
+    const onChangeTabKey = (key) =>{
+        dispatch(setActiveTab(key));
+    }
+
     const items = [
         {
             key: '1',
@@ -33,7 +42,7 @@ function TabsContainer() {
                     }
                 }
             }}>
-                <Tabs defaultActiveKey="1" items={items}
+                <Tabs defaultActiveKey={activeTabKey} onChange={onChangeTabKey} items={items}
                       tabBarStyle={{texDecoration: "none", textTransform: "uppercase"}}/>;
             </ConfigProvider>
         </>

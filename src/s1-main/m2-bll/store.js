@@ -1,13 +1,13 @@
 import {applyMiddleware, combineReducers, createStore} from "redux";
 import thunk from "redux-thunk";
-import {headerReducer} from "./reducer/header_reducer";
+import {commonSetReducer} from "./reducer/commonSetReducer";
 import {premieresReducer} from "./reducer/films/premiersReducer";
 import releasesReducer from "./reducer/films/releasesReducer";
 import filmsReducer from "./reducer/films/filmsReducer";
 import {filmInfoReducer} from "./reducer/films/filmInfoReducer";
 
 let reducer = combineReducers({
-    header: headerReducer,
+    settings: commonSetReducer,
     releases: releasesReducer,
     premieres: premieresReducer,
     films: filmsReducer,
