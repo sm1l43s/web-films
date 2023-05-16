@@ -6,15 +6,15 @@ import FilmsInfo from "./FilmsInfo";
 import SpinContainer from "../Content/Spin/SpinContainer";
 
 function FilmInfoContainer() {
-    const params = useParams();
+    const {filmId} = useParams();
     const filmInfo = useSelector(state => state.filmInfo);
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(getFilmInfoById(params.filmId));
-    }, [params.filmId]);
+        dispatch(getFilmInfoById(filmId));
+    }, [filmId]);
     return (
-        filmInfo.isFetching ? <SpinContainer countRow={5} /> : <FilmsInfo film={filmInfo.film}/>
+        filmInfo.isFetching ? <SpinContainer countRow={2} /> : <FilmsInfo film={filmInfo.film}/>
     );
 }
 

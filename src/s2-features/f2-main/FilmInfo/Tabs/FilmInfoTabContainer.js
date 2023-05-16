@@ -8,30 +8,32 @@ import ReviewsFilmInfoTabContainer from "./Tab/ReviewsFilmInfoTabContainer";
 import SimilarsFilmInfoTabContainer from "./Tab/SimilarsFilmInfoTabContainer";
 
 function FilmInfoTabContainer({id}) {
+    let tabItems = [];
+    if (id != null) {
+        tabItems = [
+            {
+                key: '1',
+                label: `Подобные картины`,
+                children: <SimilarsFilmInfoTabContainer id={id}/>,
+            },
+            {
+                key: '2',
+                label: `Рецензии`,
+                children: <ReviewsFilmInfoTabContainer id={id}/>,
+            },
+            {
+                key: '3',
+                label: `Видео`,
+                children: <VideosFilmInfoTabContainer id={id}/>,
+            },
+            {
+                key: '4',
+                label: `Изображения`,
+                children: <ImagesFilmInfoTabContainer id={id}/>,
+            },
 
-    const tabItems = [
-        {
-            key: '1',
-            label: `Подобные картины`,
-            children: <SimilarsFilmInfoTabContainer id={id}/>,
-        },
-        {
-            key: '2',
-            label: `Рецензии`,
-            children: <ReviewsFilmInfoTabContainer id={id}/>,
-        },
-        {
-            key: '3',
-            label: `Видео`,
-            children: <VideosFilmInfoTabContainer id={id}/>,
-        },
-        {
-            key: '4',
-            label: `Изображения`,
-            children: <ImagesFilmInfoTabContainer id={id}/>,
-        },
-
-    ];
+        ];
+    }
     const dispatch = useDispatch();
 
     return (

@@ -1,6 +1,6 @@
 import {Collapse, ConfigProvider} from "antd";
 import {CaretRightOutlined} from '@ant-design/icons';
-import classes from "./FilmInfo.module.css";
+import classes from "../FilmInfo.module.css";
 
 const {Panel} = Collapse;
 

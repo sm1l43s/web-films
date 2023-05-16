@@ -3,9 +3,11 @@ import {Col, Image, Row} from "antd";
 import {StarFilled} from "@ant-design/icons";
 import {checkName, cutText, getCastItems} from "../../../s1-main/m2-bll/utils";
 import AboutContainer from "./parts/AboutContainer";
-import SeriesSeasonInfoContainer from "./SeriesSeasonInfoContainer";
+import SeriesSeasonInfoContainer from "./parts/SeriesSeasonInfoContainer";
 import React from "react";
 import FilmInfoTabContainer from "./Tabs/FilmInfoTabContainer";
+import {useSelector} from "react-redux";
+import SpinContainer from "../Content/Spin/SpinContainer";
 
 function FilmsInfo({film}) {
     let genres = getCastItems(film.genres, "genre");

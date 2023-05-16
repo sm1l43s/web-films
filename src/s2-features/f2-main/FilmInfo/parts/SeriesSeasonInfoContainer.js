@@ -1,6 +1,6 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
-import {getSeriesSeasonInfo} from "../../../s1-main/m2-bll/thunk/filmsThunk";
+import {getSeriesSeasonInfo} from "../../../../s1-main/m2-bll/thunk/filmsThunk";
 import SeriesSeasonInfo from "./SeriesSeasonInfo";
 
 function SeriesSeasonInfoContainer({id}) {

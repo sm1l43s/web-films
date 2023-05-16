@@ -28,7 +28,7 @@ let initialState = {
     currentPageReviews: 1,
     totalElementsReviews: 20,
     similars: [],
-    isFetchingSimilars: false,
+    isFetchingSimilars: true,
     currentPageSimilars: 1,
     totalElementsSimilars: 20,
 }
