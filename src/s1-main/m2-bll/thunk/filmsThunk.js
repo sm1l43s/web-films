@@ -2,7 +2,13 @@ import {FilmsApi} from "../../m3-dal/api/filmsApi";
 import {setIsFetchingReleases, setReleasedFilms, setTotalElementsReleases} from "../actions/films/releasesAction";
 import {setIsFetchingPremieres, setPremieresFilms} from "../actions/films/premieresActions";
 import {setFilms, setIsFetchingFilms, setTotalElementsFilms} from "../actions/films/filmsAction";
-import {setFilmInfo, setIsFetching} from "../actions/films/filmInfoAction";
+import {
+    setFilmInfo,
+    setFilmInfoImages, setFilmInfoReviews, setFilmInfoVideos,
+    setIsFetching,
+    setIsFetchingImages, setIsFetchingReviews, setIsFetchingSimilars, setIsFetchingVideos, setSimilars,
+    setTotalElementsImages, setTotalElementsReviews, setTotalElementsSimilars, setTotalElementsVideos
+} from "../actions/films/filmInfoAction";
 import {setIsFetchingSeries, setSeries, setTotalElementsSeries} from "../actions/films/seriesAction";
 import {setSeriesSeasonInfo} from "../actions/films/seriesSeasonInfo";
 
@@ -69,4 +75,50 @@ export const getSeriesSeasonInfo = (id) => async (dispatch) => {
     } else {
         console.log(response.status);
     }
+}
+export const getImagesFilmInfo = (id, page) => async (dispatch) => {
+    dispatch(setIsFetchingImages(true));
+    let response = await FilmsApi.getImagesFilmInfo(id, page);
+    if (response.status === 200) {
+        dispatch(setFilmInfoImages(response.data.items));
+        dispatch(setTotalElementsImages(response.data.total));
+    } else {
+        console.log(response.status);
+    }
+    dispatch(setIsFetchingImages(false));
+}
+export const getVideosFilmInfo = (id, page) => async (dispatch) => {
+    dispatch(setIsFetchingVideos(true));
+    let response = await FilmsApi.getVideosFilmInfo(id, page);
+    if (response.status === 200) {
+        dispatch(setFilmInfoVideos(response.data.items));
+        dispatch(setTotalElementsVideos(response.data.total));
+    } else {
+        console.error(response.status);
+    }
+    dispatch(setIsFetchingVideos(false));
+}
+
+export const getReviewsFilmInfo = (id, page) => async (dispatch) => {
+    dispatch(setIsFetchingReviews(true));
+    let response = await FilmsApi.getReviewsFilmInfo(id, page);
+    if (response.status === 200) {
+        dispatch(setFilmInfoReviews(response.data.items));
+        dispatch(setTotalElementsReviews(response.data.total));
+    } else {
+        console.log(response.status);
+    }
+    dispatch(setIsFetchingReviews(false));
+}
+
+export const getSimilarsFilmById = (id) => async (dispatch) => {
+    dispatch(setIsFetchingSimilars(true));
+    let response = await FilmsApi.getSimilarsFilmById(id);
+    if (response.status === 200) {
+        dispatch(setSimilars(response.data.items));
+        dispatch(setTotalElementsSimilars(response.data.total));
+    } else {
+        console.log(response.status);
+    }
+    dispatch(setIsFetchingSimilars(false));
 }

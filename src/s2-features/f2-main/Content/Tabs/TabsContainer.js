@@ -1,41 +1,16 @@
 import React from "react";
 import {ConfigProvider, Tabs} from "antd";
 import classes from "../Content.module.css";
-import NewReleasesTabContainer from "./Tab/NewReleasesTabContainer";
-import FilmsTabContainer from "./Tab/FilmsTabContainer";
-import {useDispatch, useSelector} from "react-redux";
-import {setActiveTab} from "../../../../s1-main/m2-bll/actions/commonSetActions";
-import SeriesTabContainer from "./Tab/SeriesTabContainer";
 
-function TabsContainer() {
-    const activeTabKey = useSelector(state => state.settings.activeTabKey);
-    const dispatch = useDispatch();
+function TabsContainer({items, activeTabKey, dispatch, setActiveTab, title}) {
 
     const onChangeTabKey = (key) =>{
         dispatch(setActiveTab(key));
     }
 
-    const items = [
-        {
-            key: '1',
-            label: `Цифровые релизы`,
-            children: <NewReleasesTabContainer/>,
-        },
-        {
-            key: '2',
-            label: `Фильмы`,
-            children: <FilmsTabContainer/>,
-        },
-        {
-            key: '3',
-            label: `Сериалы`,
-            children: <SeriesTabContainer/>,
-        },
-    ];
-
     return (
         <>
-            <h2 className={classes.title} style={{textTransform: "none"}}>Новинки</h2>
+            <h2 className={classes.title} style={{textTransform: "none"}}>{title}</h2>
             <ConfigProvider theme={{
                 components: {
                     Tabs: {
@@ -43,13 +18,13 @@ function TabsContainer() {
                         colorPrimaryActive: "#fff",
                         colorText: "rgba(255, 255, 255, 0.75)",
                         colorBorderSecondary: "#2b2b31",
-                        padding: "0 5",
+                        padding: "0 5px",
                         colorPrimaryHover: "#fff"
                     }
                 }
             }}>
                 <Tabs defaultActiveKey={activeTabKey} onChange={onChangeTabKey} items={items}
-                      tabBarStyle={{texDecoration: "none", textTransform: "uppercase"}}/>;
+                      tabBarStyle={{texDecoration: "none", textTransform: "uppercase"}}/>
             </ConfigProvider>
         </>
     );

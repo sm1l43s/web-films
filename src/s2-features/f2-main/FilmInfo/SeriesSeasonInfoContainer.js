@@ -8,7 +8,7 @@ function SeriesSeasonInfoContainer({id}) {
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(getSeriesSeasonInfo(id));
-    }, [id]);
+    }, [dispatch, id]);
     return (
         <div style={{padding: "10px 20px", backgroundColor: "#28282d",}}>
             <SeriesSeasonInfo seasonInfo={seasonInfo.seasonInfo}/>

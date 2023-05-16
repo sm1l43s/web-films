@@ -28,7 +28,7 @@ function PaginationContainer(props) {
                 },
             },
         }}>
-            <Pagination style={{backgroundColor: "#2b2b31", boxShadow: "0 0 20px 0 rgba(0,0,0,0.3)",}}
+            <Pagination hideOnSinglePage={true} style={{backgroundColor: "#2b2b31", boxShadow: "0 0 20px 0 rgba(0,0,0,0.3)",}}
                         showSizeChanger={false}
                         pageSize={props.pageSize}
                         current={props.currentPage}

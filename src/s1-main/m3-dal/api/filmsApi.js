@@ -24,5 +24,17 @@ export const FilmsApi = {
     },
     getSeriesSeasonInfo(id) {
         return instance.get(`/films/${id}/seasons`);
+    },
+    getImagesFilmInfo(id, page) {
+        return instance.get(`/films/${id}/images?page=${page}`);
+    },
+    getVideosFilmInfo(id, page) {
+        return instance.get(`/films/${id}/videos?page=${page}`);
+    },
+    getReviewsFilmInfo(id, page) {
+        return instance.get(`/films/${id}/reviews?page=${page}`);
+    },
+    getSimilarsFilmById(id) {
+        return instance.get(`/films/${id}/similars`);
     }
 }

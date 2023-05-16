@@ -4,6 +4,8 @@ import {StarFilled} from "@ant-design/icons";
 import {checkName, cutText, getCastItems} from "../../../s1-main/m2-bll/utils";
 import AboutContainer from "./parts/AboutContainer";
 import SeriesSeasonInfoContainer from "./SeriesSeasonInfoContainer";
+import React from "react";
+import FilmInfoTabContainer from "./Tabs/FilmInfoTabContainer";
 
 function FilmsInfo({film}) {
     let genres = getCastItems(film.genres, "genre");
@@ -15,7 +17,7 @@ function FilmsInfo({film}) {
     let filmName = checkName(film.nameRu, film.nameEn, film.nameOriginal);
 
     let age = film.ratingAgeLimits ?? film.ratingMpaa ?? "UNK";
-    age = age.length > 3 ? age.slice(3): age;
+    age = age.length > 3 ? age.slice(3) : age;
 
     return (
         <>
@@ -27,8 +29,7 @@ function FilmsInfo({film}) {
                     <Row justify={"start"} style={{marginTop: 5}}>
                         <div className={classes.info}>
                             <span className={classes.rate}>
-                                <StarFilled style={{ fontSize: 14, marginTop: 5,
-                                color: "#ff55a5"}}/>
+                                <StarFilled style={{ fontSize: 14, marginTop: 5, color: "#ff55a5"}}/>
                                 {rating}
                             </span>
                             <span className={classes.ageInfo}>{age + "+"}</span>
@@ -51,7 +52,7 @@ function FilmsInfo({film}) {
                         </div>
                     </Row>
                 </Col>
-                <Row justify={"space-between"} style={{width: "100%", marginTop: 20}}>
+                <Row justify={film.serial ? "space-between" : "center"} style={{width: "100%", marginTop: 20}}>
                     <Col>
                         <div className={classes.iframe_block}>
                             <iframe className={classes.iframe_class}
@@ -62,12 +63,11 @@ function FilmsInfo({film}) {
                             </iframe>
                         </div>
                     </Col>
-                    <Col>
-                        {
-                            film.serial ? <SeriesSeasonInfoContainer id={film.kinopoiskId} /> : <></>
-                        }
-                    </Col>
+                        {film.serial ? <Col><SeriesSeasonInfoContainer id={film.kinopoiskId} /></Col> : <></>}
                 </Row>
+            </Row>
+            <Row justify={"start"} style={{marginTop: 50}}>
+                <FilmInfoTabContainer id={film.kinopoiskId} />
             </Row>
         </div>
     </>);
