@@ -11,6 +11,11 @@ import {
 } from "../actions/films/filmInfoAction";
 import {setIsFetchingSeries, setSeries, setTotalElementsSeries} from "../actions/films/seriesAction";
 import {setSeriesSeasonInfo} from "../actions/films/seriesSeasonInfo";
+import {
+    setFilmsByKeywordSearch,
+    setIsFetchingSearch,
+    setTotalElementsBySearchKeyword
+} from "../actions/commonSetActions";
 
 export const getReleasesFilms = (year, month, page) => async (dispatch) => {
     dispatch(setIsFetchingReleases(true));
@@ -121,4 +126,16 @@ export const getSimilarsFilmById = (id) => async (dispatch) => {
         console.log(response.status);
     }
     dispatch(setIsFetchingSimilars(false));
+}
+
+export const getFilmsBySearchKeyword = (keyword, page) => async (dispatch) => {
+    dispatch(setIsFetchingSearch(true));
+    let response = await FilmsApi.getFilmsBySearchKeyword(keyword, page);
+    if (response.status === 200) {
+        dispatch(setFilmsByKeywordSearch(response.data.films));
+        dispatch(setTotalElementsBySearchKeyword(response.data.searchFilmsCountResult));
+    } else {
+        console.error(response.status);
+    }
+    dispatch(setIsFetchingSearch(false));
 }

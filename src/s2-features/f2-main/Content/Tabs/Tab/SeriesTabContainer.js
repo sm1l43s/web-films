@@ -3,7 +3,7 @@ import {useEffect} from "react";
 import {getSeries} from "../../../../../s1-main/m2-bll/thunk/filmsThunk";
 import TabsChildren from "./TabsChildren";
 import {Row} from "antd";
-import PaginationContainer from "../../Pagination/PaginationContainer";
+import PaginationContainer from "../../../Pagination/PaginationContainer";
 import {setCurrentPageSeries} from "../../../../../s1-main/m2-bll/actions/films/seriesAction";
 
 function SeriesTabContainer() {

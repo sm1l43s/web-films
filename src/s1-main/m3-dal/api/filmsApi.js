@@ -36,5 +36,8 @@ export const FilmsApi = {
     },
     getSimilarsFilmById(id) {
         return instance.get(`/films/${id}/similars`);
+    },
+    getFilmsBySearchKeyword(keyword, page) {
+        return instance.get(`/films/search-by-keyword?keyword=${keyword}&page=${page}`);
     }
 }

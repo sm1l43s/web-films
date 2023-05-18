@@ -2,7 +2,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {getReleasesFilms} from "../../../../../s1-main/m2-bll/thunk/filmsThunk";
 import TabsChildren from "./TabsChildren";
 import {useEffect} from "react";
-import PaginationContainer from "../../Pagination/PaginationContainer";
+import PaginationContainer from "../../../Pagination/PaginationContainer";
 import {Row} from "antd";
 import {setCurrentPageReleases} from "../../../../../s1-main/m2-bll/actions/films/releasesAction";
 

@@ -1,7 +1,7 @@
 import classes from "./Header.module.css";
 import {SearchOutlined} from "@ant-design/icons";
 import {useDispatch, useSelector} from "react-redux";
-import {setIsSearchBar} from "../../s1-main/m2-bll/actions/commonSetActions";
+import {setIsSearchBar, setKeyword, setOnChangeKeyword} from "../../s1-main/m2-bll/actions/commonSetActions";
 import {NavLink} from "react-router-dom";
 
 function Header() {
@@ -10,6 +10,15 @@ function Header() {
 
     function onToggleSearchBar() {
         dispatch(setIsSearchBar(!isSearchBar));
+    }
+
+    let searchKeyWord = "";
+    function onChangeKeywordSearch(e) {
+        searchKeyWord = e.target.value;
+        dispatch(setOnChangeKeyword(e.target.value));
+    }
+    function onCLickSearchButton() {
+        dispatch(setKeyword(searchKeyWord));
     }
 
     return (
@@ -46,9 +55,9 @@ function Header() {
                 isSearchBar ?
                     <div className={classes.searchContainer}>
                         <div className={classes.searchContent}>
-                            <input type="text"
+                            <input onChange={onChangeKeywordSearch} type="text"
                                    placeholder="Search for a movie, TV Series that you are looking for"></input>
-                            <button type="button">Поиск</button>
+                            <NavLink to={"/search"}><button onClick={onCLickSearchButton} type="button">Поиск</button></NavLink>
                         </div>
                     </div>
                     :

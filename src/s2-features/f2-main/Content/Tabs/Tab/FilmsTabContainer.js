@@ -4,7 +4,7 @@ import {useEffect} from "react";
 import {getFilms} from "../../../../../s1-main/m2-bll/thunk/filmsThunk";
 import {setCurrentPageFilms} from "../../../../../s1-main/m2-bll/actions/films/filmsAction";
 import {Row} from "antd";
-import PaginationContainer from "../../Pagination/PaginationContainer";
+import PaginationContainer from "../../../Pagination/PaginationContainer";
 
 function FilmsTabContainer() {
     const films = useSelector(state => state.films);

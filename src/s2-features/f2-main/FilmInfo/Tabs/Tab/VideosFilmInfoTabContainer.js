@@ -3,7 +3,7 @@ import {Col, Row} from "antd";
 import React, {useEffect} from "react";
 import ReactPlayer from "react-player";
 import SpinContainer from "../../../Content/Spin/SpinContainer";
-import PaginationContainer from "../../../Content/Pagination/PaginationContainer";
+import PaginationContainer from "../../../Pagination/PaginationContainer";
 import {setCurrentPageVideos} from "../../../../../s1-main/m2-bll/actions/films/filmInfoAction";
 import {getVideosFilmInfo} from "../../../../../s1-main/m2-bll/thunk/filmsThunk";
 

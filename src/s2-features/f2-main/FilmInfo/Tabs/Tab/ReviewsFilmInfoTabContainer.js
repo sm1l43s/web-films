@@ -4,7 +4,7 @@ import {getReviewsFilmInfo} from "../../../../../s1-main/m2-bll/thunk/filmsThunk
 import {Collapse, ConfigProvider, Row} from "antd";
 import classes from "./Review.module.css";
 import {CaretRightOutlined} from "@ant-design/icons";
-import PaginationContainer from "../../../Content/Pagination/PaginationContainer";
+import PaginationContainer from "../../../Pagination/PaginationContainer";
 import {setCurrentPageReviews} from "../../../../../s1-main/m2-bll/actions/films/filmInfoAction";
 import SpinContainer from "../../../Content/Spin/SpinContainer";
 

@@ -3,7 +3,7 @@ import {useEffect} from "react";
 import {getImagesFilmInfo} from "../../../../../s1-main/m2-bll/thunk/filmsThunk";
 import {Col, Row} from "antd";
 import {Image} from 'antd';
-import PaginationContainer from "../../../Content/Pagination/PaginationContainer";
+import PaginationContainer from "../../../Pagination/PaginationContainer";
 import {setCurrentPageImages} from "../../../../../s1-main/m2-bll/actions/films/filmInfoAction";
 import SpinContainer from "../../../Content/Spin/SpinContainer";
 
