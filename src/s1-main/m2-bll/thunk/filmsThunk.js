@@ -4,10 +4,19 @@ import {setIsFetchingPremieres, setPremieresFilms} from "../actions/films/premie
 import {setFilms, setIsFetchingFilms, setTotalElementsFilms} from "../actions/films/filmsAction";
 import {
     setFilmInfo,
-    setFilmInfoImages, setFilmInfoReviews, setFilmInfoVideos,
+    setFilmInfoImages,
+    setFilmInfoReviews,
+    setFilmInfoVideos,
     setIsFetching,
-    setIsFetchingImages, setIsFetchingReviews, setIsFetchingSimilars, setIsFetchingVideos, setSimilars,
-    setTotalElementsImages, setTotalElementsReviews, setTotalElementsSimilars, setTotalElementsVideos
+    setIsFetchingImages,
+    setIsFetchingReviews,
+    setIsFetchingSimilars,
+    setIsFetchingVideos,
+    setSimilars,
+    setTotalElementsImages,
+    setTotalElementsReviews,
+    setTotalElementsSimilars,
+    setTotalElementsVideos
 } from "../actions/films/filmInfoAction";
 import {setIsFetchingSeries, setSeries, setTotalElementsSeries} from "../actions/films/seriesAction";
 import {setSeriesSeasonInfo} from "../actions/films/seriesSeasonInfo";
@@ -16,6 +25,7 @@ import {
     setIsFetchingSearch,
     setTotalElementsBySearchKeyword
 } from "../actions/commonSetActions";
+import {setFilmsCatalog, setIsFetchingCatalog, setTotalElementsCatalog} from "../actions/catalogFilmsAction";
 
 export const getReleasesFilms = (year, month, page) => async (dispatch) => {
     dispatch(setIsFetchingReleases(true));
@@ -138,4 +148,16 @@ export const getFilmsBySearchKeyword = (keyword, page) => async (dispatch) => {
         console.error(response.status);
     }
     dispatch(setIsFetchingSearch(false));
+}
+
+export const getFilmsToCatalog = (type, ratingFrom, ratingTo, yearFrom, yearTo, page, order, keyword) => async (dispatch) => {
+    dispatch(setIsFetchingCatalog(true));
+    let response = await FilmsApi.getFilms(type, ratingFrom, ratingTo, yearFrom, yearTo, page, order, keyword);
+    if (response.status === 200) {
+        dispatch(setFilmsCatalog(response.data.items));
+        dispatch(setTotalElementsCatalog(response.data.total));
+    } else {
+        console.error(response.status);
+    }
+    dispatch(setIsFetchingCatalog(false));
 }

@@ -35,7 +35,7 @@ function Header() {
                                 <li><span>Фильмы</span></li>
                                 <li><span>Сериалы</span></li>
                                 <li><span>Мультфильмы</span></li>
-                                <li><span>Каталог</span></li>
+                                <li><NavLink to={"/catalog"}><span>Каталог</span></NavLink></li>
                             </ul>
                         </div>
                         <div className={classes.menuSearch}>

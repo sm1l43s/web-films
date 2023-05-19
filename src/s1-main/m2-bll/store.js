@@ -7,6 +7,7 @@ import filmsReducer from "./reducer/films/filmsReducer";
 import {filmInfoReducer} from "./reducer/films/filmInfoReducer";
 import seriesReducer from "./reducer/films/seriesReducer";
 import seriesSeasonInfoReducer from "./reducer/films/seriesSeasonInfoReducer";
+import {catalogFilmsReducer} from "./reducer/catalogFilmsReducer";
 
 let reducer = combineReducers({
     settings: commonSetReducer,
@@ -16,6 +17,7 @@ let reducer = combineReducers({
     series: seriesReducer,
     seriesSeasonInfo: seriesSeasonInfoReducer,
     filmInfo: filmInfoReducer,
+    catalog: catalogFilmsReducer
 });
 
 let store = createStore(reducer, applyMiddleware(thunk));

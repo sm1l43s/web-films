@@ -8,16 +8,7 @@ export const FilmsApi = {
         return instance.get(`/films/premieres?year=${year}&month=${month}`)
     },
     getFilms(type, ratingFrom, ratingTo, yearFrom, yearTo, page, order, keyword) {
-        return instance.get("films?" +
-            "type=" + type +
-            "&ratingFrom=" + ratingFrom +
-            "&ratingTo=" + ratingTo +
-            "&yearFrom=" + yearFrom +
-            "&yearTo=" + yearTo +
-            "&page=" + page +
-            "&order=" + order +
-            "&keyword=" + keyword
-        );
+        return instance.get(`films?type=${type}&ratingFrom=${ratingFrom}&ratingTo=${ratingTo}&yearFrom=${yearFrom}&yearTo=${yearTo}&page=${page}&order=${order}&keyword=${keyword}`);
     },
     getFilmInfoById(id) {
         return instance.get(`/films/${id}`);
